@@ -10,7 +10,7 @@
       --text: #f2fbff;
       --accent: #6ee7ff;
       --ok: #27e1a7;
-      --sup: #9b8cff;
+      --sup: #452af7;
     }
 
     * {
@@ -123,14 +123,14 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff, #4ea8ff)
+      background: radial-gradient(circle at 35% 35%, #fff, #0482f8)
     }
 
     .qr {
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff, #ff6b6b)
+      background: radial-gradient(circle at 35% 35%, #fff, #ff4b4b)
     }
 
     .mobile {
@@ -344,7 +344,7 @@
       GAME.total += 1;
       if (color === 'blue') GAME.blue += 1; else GAME.red += 1;
       play(UI.sCatch);
-      flash(color === 'blue' ? '#4ea8ff77' : '#ff6b6b77');
+      flash(color === 'blue' ? '#0482f877' : '#ff4b4b77');
       GAME.floatLabels.push({ text: color === 'blue' ? '0' : '1', x: player.x, y: player.y - 8, alpha: 1 });
       if (GAME.total > 0 && GAME.total % 5 === 0) play(UI.sBell);
       updateHUD();
@@ -362,13 +362,13 @@
       // qubits
       for (const it of GAME.items) {
         const c1 = '#fff';
-        const c2 = it.state === 'superposed' ? '#9b8cff' : (it.color === 'blue' ? '#4ea8ff' : '#ff6b6b');
+        const c2 = it.state === 'superposed' ? '#452af7' : (it.color === 'blue' ? '#0482f8' : '#ff4b4b');
         const grad = ctx.createRadialGradient(it.x - 3, it.y - 3, 1, it.x, it.y, it.r);
         grad.addColorStop(0, c1); grad.addColorStop(1, c2);
         ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, Math.PI * 2); ctx.fill();
         if (it.state === 'superposed') {
           // Un pequeño "?" translúcido para señalar que aún no sabemos si es 0 o 1
-          ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.font = 'bold 10px system-ui'; ctx.fillText('?', it.x - 3, it.y + 3);
+          ctx.fillStyle = '#4131ad'; ctx.font = 'bold 14px system-ui'; ctx.fillText('?', it.x - 3, it.y + 5);
         }
       }
 
